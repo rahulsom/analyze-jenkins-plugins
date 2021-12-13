@@ -1,0 +1,20 @@
+= Analyze Jenkins Plugins
+
+Helps with analyzing Jenkins plugins.
+This was motivated by the log4j2 vulnerability and the scramble to fix plugins that were unmaintained.
+
+== Usage
+
+Run this command
+
+[source,bash]
+----
+./gradlew run
+----
+
+It will download the update-center.json from the Jenkins server and analyze the plugins listed there.
+Right now the analysis involves the identifying all the jars in the plugin.
+It generates a report at `$HOME/jenkins-plugins/plugin-jars.csv` that you can use any tool to then further analyze. Example https://gist.github.com/rahulsom/4f992c5c16afc91ee4113ec5da61c21b[here].
+
+I have used http://harelba.github.io/q/[q] to run SQL queries on the report.
+
